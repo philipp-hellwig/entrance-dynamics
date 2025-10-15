@@ -31,9 +31,9 @@ model <- predped::predped(
 
 # Add custom agents ----
 init_agents <- create_agent_population(num_agents, model, seed=seed)
-agent_coords <- get_agent_coordinates(init_agents)
 
 # plot spawn positions as sanity check:
+agent_coords <- get_agent_coordinates(init_agents)
 base::plot(agent_coords[["x"]], agent_coords[["y"]], main="Agent spawn positions")
 
 # Simulation ----

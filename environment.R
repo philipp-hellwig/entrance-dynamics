@@ -1,7 +1,4 @@
 # file for creating an environment for an agent simulation:
-library(m4ma)
-library(predped)
-
 
 create_environment <- function(){
   # instantiate door and interactables:

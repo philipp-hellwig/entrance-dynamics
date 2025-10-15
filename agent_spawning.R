@@ -1,6 +1,6 @@
 # create agents and initialize at random positions for a simulation:
-library(m4ma)
-library(predped)
+
+# Helpers ----
 
 # get random spawn position for an agent:
 get_spawn_position <- function(){
@@ -14,6 +14,7 @@ get_spawn_position <- function(){
   pos <- c(runif(1, -5, 5), y)
   return(pos)
 }
+
 
 # returns FALSE if position is too close to position of other agents
 valid_spawn_position <- function(pos, agents){
@@ -29,6 +30,21 @@ valid_spawn_position <- function(pos, agents){
   return(TRUE)
 }
 
+
+get_agent_coordinates <- function(agents){
+  # store x, y coordinates for sanity check:
+  x <- c()
+  y <- c()
+  for(agent in agents){
+    pos <- as.vector(center(agent))
+    x <- append(x, pos[1])
+    y <- append(y, pos[2])
+  }
+  return(list(x=x,y=y))
+}
+
+
+# Main function ----
 create_agent_population <- function(num_agents, model, seed=1){
   set.seed(seed)
   my_agents <- list()
@@ -42,16 +58,4 @@ create_agent_population <- function(num_agents, model, seed=1){
     my_agents[[i]] <- add_agent(model, position=pos)
   }
   return(my_agents)
-}
-
-get_agent_coordinates <- function(agents){
-  # store x, y coordinates for sanity check:
-  x <- c()
-  y <- c()
-  for(agent in agents){
-    pos <- as.vector(center(agent))
-    x <- append(x, pos[1])
-    y <- append(y, pos[2])
-  }
-  return(list(x=x,y=y))
 }
