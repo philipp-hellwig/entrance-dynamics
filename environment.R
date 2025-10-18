@@ -5,19 +5,19 @@ create_environment <- function(){
   revolving_door <- predped::rectangle(
     center=c(0,0),
     size=c(0.5,2.5),
+    moveable=TRUE,
     interactable=FALSE
   )
   interactable_top <- predped::rectangle(
-    center=c(0,7),
-    size=c(9,.5),
+    center=c(0,7.4),
+    size=c(9,.2),
     forbidden=1:3
   )
   interactable_bottom <- predped::rectangle(
-    center=c(0,-7),
-    size=c(9,.5),
+    center=c(0,-7.4),
+    size=c(9,.2),
     forbidden=c(1,3,4)
   )
-  
   # instantiate background and walls:
   environment <- predped::background(
     shape = predped::rectangle(
@@ -49,10 +49,7 @@ create_environment <- function(){
         size=c(0.5,3),
         interactable=FALSE
       )
-    ),
-    entrance = c(0, -6),
-    exit = c(0, 6),
-    # limited_access = list(segment(from=c(0,0),to=c(2.5,0)), segment(from=c(0,0),to=c(-2.5,0)))
+    )
   )
   return(environment)
 }

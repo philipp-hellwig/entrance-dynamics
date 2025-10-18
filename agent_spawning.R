@@ -1,17 +1,21 @@
 # create agents and initialize at random positions for a simulation:
 
+top <- 7
+bottom  <- -7
+
 # Helpers ----
 
 # get random spawn position for an agent:
 get_spawn_position <- function(){
   if(sample(c(0,1),1)==1){
     # spawn in top region
-    y <- runif(1, 2.5, 7)
-  }else{
-    # spawn in bottom region
-    y <- runif(1, -7, -2.5)
+    y <- runif(1, 2.5, top)
   }
-  pos <- c(runif(1, -5, 5), y)
+  else{
+    # spawn in bottom region
+    y <- runif(1, bottom, -2.5)
+  }
+  pos <- c(runif(1, -4.8, 4.8), y)
   return(pos)
 }
 
