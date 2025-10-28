@@ -1,6 +1,6 @@
 # file for creating an environment for an agent simulation:
 
-create_environment <- function(){
+create_environment <- function(one_directional_flow=FALSE){
   # instantiate door and interactables:
   revolving_door <- predped::rectangle(
     center=c(0,0),
@@ -51,5 +51,15 @@ create_environment <- function(){
       )
     )
   )
-  return(environment)
+  if(one_directional_flow){
+    limited_access(environment) <- list(
+      segment(from = c(0, 1.5), to = c(1.5, 1.5)),
+      segment(from = c(0, -1.5), to = c(1.5, -1.5)),
+      segment(from = c(0, 1.5), to = c(-1.5, 1.5)),
+      segment(from = c(0, -1.5), to = c(-1.5, -1.5))
+    )
+    return(environment)
+  }else{
+    return(environment)
+  }
 }
