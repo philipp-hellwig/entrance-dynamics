@@ -1,4 +1,4 @@
-setwd("C:/Users/13579681/Desktop/MSc/3/Modelling Minds - From Neural Circuits to Mobile Agents/assignments/entrance-dynamics/")
+setwd("<your path to the project folder here>")
 library(predped) 
 library(parallel)
 library(ggplot2)
@@ -13,7 +13,7 @@ angles <- seq(0, 2 * pi, 0.02)
 seed <- 1
 num_agents <- 50
 rotate_door <- TRUE
-one_dir_flow <- FALSE
+one_dir_flow <- TRUE
 simulation_iterations <- 500
 
 parameters <- load_parameters()[["params_archetypes"]]
